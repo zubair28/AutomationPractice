@@ -19,7 +19,7 @@ public class SignUpPage {
     @FindBy(xpath = "//label[@for='id_gender1']")
     WebElement suffix;
 
-    @FindBy(id = "#customer_firstname")
+    @FindBy(id = "customer_firstname")
     WebElement first_name;
 
     @FindBy(id = "customer_lastname")
@@ -58,6 +58,15 @@ public class SignUpPage {
     @FindBy(xpath = "//button[@id='submitAccount']")
     WebElement registerbutton;
 
+    @FindBy(id = "email")
+    WebElement email1;
+
+    @FindBy(id = "passwd")
+    WebElement password1;
+
+    @FindBy(xpath = "//*[@id='SubmitLogin']")
+    WebElement sign_in;
+
     public SignUpPage(WebDriver driver) {
         this.driver= driver;
         PageFactory.initElements(driver, this);
@@ -75,11 +84,14 @@ public class SignUpPage {
     public void setLast_name(String lastName) {
         last_name.sendKeys(lastName);
     }
-    public void selectDropdownDay(String value) {
-        new Select(day).selectByValue(value);
+    public void setPassword(CharSequence yourpassword) {
+        password.sendKeys(yourpassword);
+    }
+    public void selectDropdownDay(int value) {
+        new Select(day).selectByIndex(value);
     }
     public void selectDropdownMonth(int value) {
-        new Select(month).deselectByIndex(value);
+        new Select(month).selectByIndex(value);
     }
     public void selectDropdownYear(String value) {
         new Select(year).selectByValue(value);
@@ -101,11 +113,16 @@ public class SignUpPage {
     public void selectDropdownCountry(String value) {
         new Select(country).selectByVisibleText(value);
     }
-    public void setPhone(CharSequence phonenum) {
+    public void setPhone(String phonenum) {
         phone.sendKeys(phonenum);
     }
     public void clickRegister() {
         registerbutton.click();
+    }
+    public void signIn(String youremail, String yourpassword) {
+        email1.sendKeys(youremail);
+        password1.sendKeys(yourpassword);
+        sign_in.click();
     }
 
 

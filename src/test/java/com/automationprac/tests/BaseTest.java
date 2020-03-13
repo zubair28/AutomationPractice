@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    ChromeDriver driver;
+    WebDriver driver;
 
     @BeforeTest
     public void setUpBrowser() {
@@ -21,6 +21,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://automationpractice.com/index.php");
+        driver.manage().window().maximize();
 
     }
 
